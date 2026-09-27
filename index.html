@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prescribing Medication</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="box">
+  <div class="title">Prescribing medication</div>
+  <div class="content">
+
+    <!-- Step 0: open record / choose field -->
+    <div id="step-start">
+      <p>Patient record: <span class="selected">open for input</span></p>
+      <label for="medField">Medication field</label>
+      <select id="medField">
+        <option value="">-- click to select --</option>
+        <option value="current">Current medication</option>
+        <option value="new">New medication</option>
+        <option value="formulary">Formulary</option>
+      </select>
+    </div>
+
+    <!-- Current medication path -->
+    <div id="step-current" class="step hidden">
+      <p>Current medication: <span class="selected" id="currentDrugName"></span> — current dose: <span id="currentDoseDisplay"></span></p>
+      <p>Is this dose correct?</p>
+      <button id="currentKeep">Keep dose</button>
+      <button id="currentChange" class="secondary">Change dose</button>
+      <div id="currentDoseInputWrap" class="hidden">
+        <label for="currentDoseInput">New dose</label>
+        <input type="number" id="currentDoseInput">
+        <button id="currentDoseConfirm">Confirm prescription</button>
+      </div>
+    </div>
+
+    <!-- New medication path -->
+    <div id="step-new" class="step hidden">
+      <label for="newDrugSearch">Type first few letters of drug name</label>
+      <input type="text" id="newDrugSearch" autocomplete="off">
+      <ul class="drug-list hidden" id="newDrugResults"></ul>
+      <div id="newDrugConfirmWrap" class="hidden">
+        <p>You selected: <span class="selected" id="newDrugSelected"></span> — is this correct?</p>
+        <button id="newDrugYes">Yes, correct</button>
+        <button id="newDrugNo" class="secondary">No, search again</button>
+      </div>
+      <div id="newDoseWrap" class="hidden">
+        <label for="newDoseInput">Enter dose</label>
+        <input type="number" id="newDoseInput">
+        <button id="newDoseConfirm">Confirm prescription</button>
+      </div>
+    </div>
+
+    <!-- Formulary path -->
+    <div id="step-formulary" class="step hidden">
+      <label for="formSearch">Search approved formulary</label>
+      <input type="text" id="formSearch" autocomplete="off">
+      <ul class="drug-list hidden" id="formResults"></ul>
+      <div id="formConfirmWrap" class="hidden">
+        <p>You selected: <span class="selected" id="formSelected"></span> — is this correct?</p>
+        <button id="formYes">Yes, correct</button>
+        <button id="formNo" class="secondary">No, search again</button>
+      </div>
+      <div id="formDoseWrap" class="hidden">
+        <label for="formDoseInput">Enter dose</label>
+        <input type="number" id="formDoseInput">
+        <button id="formDoseConfirm">Confirm prescription</button>
+      </div>
+    </div>
+
+    <!-- Range warning (shared) -->
+    <div id="rangeWarning" class="warning hidden"></div>
+    <div id="rangeChangeWrap" class="hidden">
+      <label for="rangeDoseInput">Enter a new dose within range</label>
+      <input type="number" id="rangeDoseInput">
+      <button id="rangeDoseConfirm">Confirm prescription</button>
+    </div>
+
+    <!-- Final check -->
+    <div id="step-check" class="step hidden">
+      <p><strong>Please check the prescription:</strong></p>
+      <p id="checkSummary"></p>
+      <button id="checkOk">OK</button>
+      <button id="checkChange" class="secondary">Change</button>
+    </div>
+
+    <!-- Recorded message -->
+    <div id="step-done" class="step hidden">
+      <p><strong>Prescription recorded on the audit database.</strong></p>
+      <button id="startOver">Prescribe another</button>
+    </div>
+
+    <div class="audit">
+      <strong>Audit database:</strong>
+      <ul id="auditList"><li><em>empty</em></li></ul>
+    </div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

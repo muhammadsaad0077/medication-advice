@@ -1,0 +1,97 @@
+  :root{
+    --border:#29a3c9;
+    --bg-title:#eaf7fb;
+    --bg:#ffffff;
+    --text:#1a1a1a;
+    --btn:#29a3c9;
+    --btn-text:#ffffff;
+    --danger:#c94b4b;
+    --ok:#3ba55c;
+    --muted:#666;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]){
+      --bg:#1b1f22;
+      --bg-title:#12303a;
+      --text:#e8e8e8;
+      --muted:#aaa;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#1b1f22;
+    --bg-title:#12303a;
+    --text:#e8e8e8;
+    --muted:#aaa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 20px;
+    padding-top: calc(20px + env(safe-area-inset-top, 0px));
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  }
+  .box {
+    max-width: 700px;
+    margin: 0 auto;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+  .title {
+    background: var(--bg-title);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 15px;
+    font-weight: bold;
+  }
+  .content {
+    padding: 15px;
+    line-height: 1.6;
+  }
+  label { display:block; margin: 10px 0 4px; font-weight: bold; }
+  select, input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+  }
+  ul.drug-list {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    max-height: 150px;
+    overflow-y: auto;
+  }
+  ul.drug-list li {
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border);
+  }
+  ul.drug-list li:last-child { border-bottom:none; }
+  ul.drug-list li:hover { background: var(--bg-title); }
+  button {
+    background: var(--btn);
+    color: var(--btn-text);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 10px 6px 0 0;
+    font-size: 14px;
+  }
+  button.secondary { background: var(--muted); }
+  .warning { color: var(--danger); font-weight: bold; margin-top: 8px; }
+  .selected { font-weight: bold; }
+  .step { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--border); }
+  .hidden { display:none; }
+  .audit {
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .audit ul { padding-left: 18px; }
